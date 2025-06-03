@@ -18,8 +18,8 @@ enum SendStatus {
   PREPARE = 1;
   CANCELED = 2;
   PENDING = 3;
-  SUCCEED = 4;
-  FAILED = 5;
+  SUCCESS = 4;
+  FAILURE = 5;
 }
 
 enum ErrCode {

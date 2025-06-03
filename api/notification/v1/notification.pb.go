@@ -81,8 +81,8 @@ const (
 	SendStatus_PREPARE            SendStatus = 1
 	SendStatus_CANCELED           SendStatus = 2
 	SendStatus_PENDING            SendStatus = 3
-	SendStatus_SUCCEED            SendStatus = 4
-	SendStatus_FAILED             SendStatus = 5
+	SendStatus_SUCCESS            SendStatus = 4
+	SendStatus_FAILURE            SendStatus = 5
 )
 
 // Enum value maps for SendStatus.
@@ -92,16 +92,16 @@ var (
 		1: "PREPARE",
 		2: "CANCELED",
 		3: "PENDING",
-		4: "SUCCEED",
-		5: "FAILED",
+		4: "SUCCESS",
+		5: "FAILURE",
 	}
 	SendStatus_value = map[string]int32{
 		"STATUS_UNSPECIFIED": 0,
 		"PREPARE":            1,
 		"CANCELED":           2,
 		"PENDING":            3,
-		"SUCCEED":            4,
-		"FAILED":             5,
+		"SUCCESS":            4,
+		"FAILURE":            5,
 	}
 )
 
@@ -1403,16 +1403,15 @@ const file_notification_v1_notification_proto_rawDesc = "" +
 	"\x03SMS\x10\x01\x12\t\n" +
 	"\x05EMAIL\x10\x02\x12\n" +
 	"\n" +
-	"\x06IN_APP\x10\x03*e\n" +
+	"\x06IN_APP\x10\x03*f\n" +
 	"\n" +
 	"SendStatus\x12\x16\n" +
 	"\x12STATUS_UNSPECIFIED\x10\x00\x12\v\n" +
 	"\aPREPARE\x10\x01\x12\f\n" +
 	"\bCANCELED\x10\x02\x12\v\n" +
 	"\aPENDING\x10\x03\x12\v\n" +
-	"\aSUCCEED\x10\x04\x12\n" +
-	"\n" +
-	"\x06FAILED\x10\x05*\x93\x03\n" +
+	"\aSUCCESS\x10\x04\x12\v\n" +
+	"\aFAILURE\x10\x05*\x93\x03\n" +
 	"\aErrCode\x12\x13\n" +
 	"\x0fERR_UNSPECIFIED\x10\x00\x12\x11\n" +
 	"\rINVALID_PARAM\x10\x01\x12\x10\n" +
