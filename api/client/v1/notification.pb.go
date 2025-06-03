@@ -26,7 +26,7 @@ type SendResultNotifyRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	NotificationId uint64                 `protobuf:"varint,1,opt,name=notification_id,json=notificationId,proto3" json:"notification_id,omitempty"`
 	OriRequest     *v1.SendRequest        `protobuf:"bytes,2,opt,name=ori_request,json=oriRequest,proto3" json:"ori_request,omitempty"`
-	Result         *v1.SendResponse       `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`
+	Result         *v1.SendResult         `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -75,7 +75,7 @@ func (x *SendResultNotifyRequest) GetOriRequest() *v1.SendRequest {
 	return nil
 }
 
-func (x *SendResultNotifyRequest) GetResult() *v1.SendResponse {
+func (x *SendResultNotifyRequest) GetResult() *v1.SendResult {
 	if x != nil {
 		return x.Result
 	}
@@ -130,12 +130,12 @@ var File_client_v1_notification_proto protoreflect.FileDescriptor
 
 const file_client_v1_notification_proto_rawDesc = "" +
 	"\n" +
-	"\x1cclient/v1/notification.proto\x12\tclient.v1\x1a\"notification/v1/notification.proto\"\xb8\x01\n" +
+	"\x1cclient/v1/notification.proto\x12\tclient.v1\x1a\"notification/v1/notification.proto\"\xb6\x01\n" +
 	"\x17SendResultNotifyRequest\x12'\n" +
 	"\x0fnotification_id\x18\x01 \x01(\x04R\x0enotificationId\x12=\n" +
 	"\vori_request\x18\x02 \x01(\v2\x1c.notification.v1.SendRequestR\n" +
-	"oriRequest\x125\n" +
-	"\x06result\x18\x03 \x01(\v2\x1d.notification.v1.SendResponseR\x06result\"4\n" +
+	"oriRequest\x123\n" +
+	"\x06result\x18\x03 \x01(\v2\x1b.notification.v1.SendResultR\x06result\"4\n" +
 	"\x18SendResultNotifyResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess2n\n" +
 	"\x0fCallbackService\x12[\n" +
@@ -160,11 +160,11 @@ var file_client_v1_notification_proto_goTypes = []any{
 	(*SendResultNotifyRequest)(nil),  // 0: client.v1.SendResultNotifyRequest
 	(*SendResultNotifyResponse)(nil), // 1: client.v1.SendResultNotifyResponse
 	(*v1.SendRequest)(nil),           // 2: notification.v1.SendRequest
-	(*v1.SendResponse)(nil),          // 3: notification.v1.SendResponse
+	(*v1.SendResult)(nil),            // 3: notification.v1.SendResult
 }
 var file_client_v1_notification_proto_depIdxs = []int32{
 	2, // 0: client.v1.SendResultNotifyRequest.ori_request:type_name -> notification.v1.SendRequest
-	3, // 1: client.v1.SendResultNotifyRequest.result:type_name -> notification.v1.SendResponse
+	3, // 1: client.v1.SendResultNotifyRequest.result:type_name -> notification.v1.SendResult
 	0, // 2: client.v1.CallbackService.SendResultNotify:input_type -> client.v1.SendResultNotifyRequest
 	1, // 3: client.v1.CallbackService.SendResultNotify:output_type -> client.v1.SendResultNotifyResponse
 	3, // [3:4] is the sub-list for method output_type

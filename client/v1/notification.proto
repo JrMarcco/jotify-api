@@ -13,7 +13,7 @@ service CallbackService {
 message SendResultNotifyRequest {
   uint64 notification_id = 1;
   notification.v1.SendRequest ori_request = 2;
-  notification.v1.SendResponse result = 3;
+  notification.v1.SendResult result = 3;
 }
 
 message SendResultNotifyResponse {
