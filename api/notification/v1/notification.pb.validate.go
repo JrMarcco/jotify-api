@@ -936,13 +936,13 @@ func (m *Notification) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Key
+	// no validation rules for BizKey
 
 	// no validation rules for Channel
 
-	// no validation rules for TempId
+	// no validation rules for TplId
 
-	// no validation rules for TempParams
+	// no validation rules for TplParams
 
 	if all {
 		switch v := interface{}(m.GetStrategy()).(type) {

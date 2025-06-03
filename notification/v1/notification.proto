@@ -30,7 +30,7 @@ enum ErrCode {
   NO_AVAILABLE_PROVIDER = 4;
   CHANNEL_NOT_FOUND = 5;
   PROVIDER_NOT_FOUND = 6;
-  TEMP_NOT_FOUND = 7;
+  TEMPLATE_NOT_FOUND = 7;
   BIZ_ID_NOT_FOUND = 8;
   CONFIG_NOT_FOUND = 9;
   QUOTA_CONFIG_NOT_FOUND = 10;
@@ -71,11 +71,11 @@ message DeadlineStrategy {
 }
 
 message Notification {
-  string key = 1;
+  string biz_key = 1;
   repeated string receivers = 2;
   Channel channel = 3;
-  string temp_id = 4;
-  map<string, string> temp_params = 5;
+  string tpl_id = 4;
+  map<string, string> tpl_params = 5;
   SendStrategy strategy = 6;
 }
 

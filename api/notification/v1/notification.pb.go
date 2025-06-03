@@ -142,7 +142,7 @@ const (
 	ErrCode_NO_AVAILABLE_PROVIDER      ErrCode = 4
 	ErrCode_CHANNEL_NOT_FOUND          ErrCode = 5
 	ErrCode_PROVIDER_NOT_FOUND         ErrCode = 6
-	ErrCode_TEMP_NOT_FOUND             ErrCode = 7
+	ErrCode_TEMPLATE_NOT_FOUND         ErrCode = 7
 	ErrCode_BIZ_ID_NOT_FOUND           ErrCode = 8
 	ErrCode_CONFIG_NOT_FOUND           ErrCode = 9
 	ErrCode_QUOTA_CONFIG_NOT_FOUND     ErrCode = 10
@@ -163,7 +163,7 @@ var (
 		4:  "NO_AVAILABLE_PROVIDER",
 		5:  "CHANNEL_NOT_FOUND",
 		6:  "PROVIDER_NOT_FOUND",
-		7:  "TEMP_NOT_FOUND",
+		7:  "TEMPLATE_NOT_FOUND",
 		8:  "BIZ_ID_NOT_FOUND",
 		9:  "CONFIG_NOT_FOUND",
 		10: "QUOTA_CONFIG_NOT_FOUND",
@@ -181,7 +181,7 @@ var (
 		"NO_AVAILABLE_PROVIDER":      4,
 		"CHANNEL_NOT_FOUND":          5,
 		"PROVIDER_NOT_FOUND":         6,
-		"TEMP_NOT_FOUND":             7,
+		"TEMPLATE_NOT_FOUND":         7,
 		"BIZ_ID_NOT_FOUND":           8,
 		"CONFIG_NOT_FOUND":           9,
 		"QUOTA_CONFIG_NOT_FOUND":     10,
@@ -572,11 +572,11 @@ func (x *DeadlineStrategy) GetDeadline() *timestamppb.Timestamp {
 
 type Notification struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	BizKey        string                 `protobuf:"bytes,1,opt,name=biz_key,json=bizKey,proto3" json:"biz_key,omitempty"`
 	Receivers     []string               `protobuf:"bytes,2,rep,name=receivers,proto3" json:"receivers,omitempty"`
 	Channel       Channel                `protobuf:"varint,3,opt,name=channel,proto3,enum=notification.v1.Channel" json:"channel,omitempty"`
-	TempId        string                 `protobuf:"bytes,4,opt,name=temp_id,json=tempId,proto3" json:"temp_id,omitempty"`
-	TempParams    map[string]string      `protobuf:"bytes,5,rep,name=temp_params,json=tempParams,proto3" json:"temp_params,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	TplId         string                 `protobuf:"bytes,4,opt,name=tpl_id,json=tplId,proto3" json:"tpl_id,omitempty"`
+	TplParams     map[string]string      `protobuf:"bytes,5,rep,name=tpl_params,json=tplParams,proto3" json:"tpl_params,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	Strategy      *SendStrategy          `protobuf:"bytes,6,opt,name=strategy,proto3" json:"strategy,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -612,9 +612,9 @@ func (*Notification) Descriptor() ([]byte, []int) {
 	return file_notification_v1_notification_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *Notification) GetKey() string {
+func (x *Notification) GetBizKey() string {
 	if x != nil {
-		return x.Key
+		return x.BizKey
 	}
 	return ""
 }
@@ -633,16 +633,16 @@ func (x *Notification) GetChannel() Channel {
 	return Channel_CHANNEL_UNSPECIFIED
 }
 
-func (x *Notification) GetTempId() string {
+func (x *Notification) GetTplId() string {
 	if x != nil {
-		return x.TempId
+		return x.TplId
 	}
 	return ""
 }
 
-func (x *Notification) GetTempParams() map[string]string {
+func (x *Notification) GetTplParams() map[string]string {
 	if x != nil {
-		return x.TempParams
+		return x.TplParams
 	}
 	return nil
 }
@@ -1352,16 +1352,16 @@ const file_notification_v1_notification_proto_rawDesc = "" +
 	"\x11start_time_millis\x18\x01 \x01(\x03R\x0fstartTimeMillis\x12&\n" +
 	"\x0fend_time_millis\x18\x02 \x01(\x03R\rendTimeMillis\"J\n" +
 	"\x10DeadlineStrategy\x126\n" +
-	"\bdeadline\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\bdeadline\"\xd5\x02\n" +
-	"\fNotification\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x1c\n" +
+	"\bdeadline\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\bdeadline\"\xd6\x02\n" +
+	"\fNotification\x12\x17\n" +
+	"\abiz_key\x18\x01 \x01(\tR\x06bizKey\x12\x1c\n" +
 	"\treceivers\x18\x02 \x03(\tR\treceivers\x122\n" +
-	"\achannel\x18\x03 \x01(\x0e2\x18.notification.v1.ChannelR\achannel\x12\x17\n" +
-	"\atemp_id\x18\x04 \x01(\tR\x06tempId\x12N\n" +
-	"\vtemp_params\x18\x05 \x03(\v2-.notification.v1.Notification.TempParamsEntryR\n" +
-	"tempParams\x129\n" +
-	"\bstrategy\x18\x06 \x01(\v2\x1d.notification.v1.SendStrategyR\bstrategy\x1a=\n" +
-	"\x0fTempParamsEntry\x12\x10\n" +
+	"\achannel\x18\x03 \x01(\x0e2\x18.notification.v1.ChannelR\achannel\x12\x15\n" +
+	"\x06tpl_id\x18\x04 \x01(\tR\x05tplId\x12K\n" +
+	"\n" +
+	"tpl_params\x18\x05 \x03(\v2,.notification.v1.Notification.TplParamsEntryR\ttplParams\x129\n" +
+	"\bstrategy\x18\x06 \x01(\v2\x1d.notification.v1.SendStrategyR\bstrategy\x1a<\n" +
+	"\x0eTplParamsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb8\x01\n" +
 	"\n" +
@@ -1412,7 +1412,7 @@ const file_notification_v1_notification_proto_rawDesc = "" +
 	"\aPENDING\x10\x03\x12\v\n" +
 	"\aSUCCEED\x10\x04\x12\n" +
 	"\n" +
-	"\x06FAILED\x10\x05*\x8f\x03\n" +
+	"\x06FAILED\x10\x05*\x93\x03\n" +
 	"\aErrCode\x12\x13\n" +
 	"\x0fERR_UNSPECIFIED\x10\x00\x12\x11\n" +
 	"\rINVALID_PARAM\x10\x01\x12\x10\n" +
@@ -1420,8 +1420,8 @@ const file_notification_v1_notification_proto_rawDesc = "" +
 	"\x14NO_AVAILABLE_CHANNEL\x10\x03\x12\x19\n" +
 	"\x15NO_AVAILABLE_PROVIDER\x10\x04\x12\x15\n" +
 	"\x11CHANNEL_NOT_FOUND\x10\x05\x12\x16\n" +
-	"\x12PROVIDER_NOT_FOUND\x10\x06\x12\x12\n" +
-	"\x0eTEMP_NOT_FOUND\x10\a\x12\x14\n" +
+	"\x12PROVIDER_NOT_FOUND\x10\x06\x12\x16\n" +
+	"\x12TEMPLATE_NOT_FOUND\x10\a\x12\x14\n" +
 	"\x10BIZ_ID_NOT_FOUND\x10\b\x12\x14\n" +
 	"\x10CONFIG_NOT_FOUND\x10\t\x12\x1a\n" +
 	"\x16QUOTA_CONFIG_NOT_FOUND\x10\n" +
@@ -1481,7 +1481,7 @@ var file_notification_v1_notification_proto_goTypes = []any{
 	(*TxCommitResponse)(nil),       // 22: notification.v1.TxCommitResponse
 	(*TxCancelRequest)(nil),        // 23: notification.v1.TxCancelRequest
 	(*TxCancelResponse)(nil),       // 24: notification.v1.TxCancelResponse
-	nil,                            // 25: notification.v1.Notification.TempParamsEntry
+	nil,                            // 25: notification.v1.Notification.TplParamsEntry
 	(*timestamppb.Timestamp)(nil),  // 26: google.protobuf.Timestamp
 }
 var file_notification_v1_notification_proto_depIdxs = []int32{
@@ -1493,7 +1493,7 @@ var file_notification_v1_notification_proto_depIdxs = []int32{
 	26, // 5: notification.v1.ScheduledStrategy.send_time:type_name -> google.protobuf.Timestamp
 	26, // 6: notification.v1.DeadlineStrategy.deadline:type_name -> google.protobuf.Timestamp
 	0,  // 7: notification.v1.Notification.channel:type_name -> notification.v1.Channel
-	25, // 8: notification.v1.Notification.temp_params:type_name -> notification.v1.Notification.TempParamsEntry
+	25, // 8: notification.v1.Notification.tpl_params:type_name -> notification.v1.Notification.TplParamsEntry
 	3,  // 9: notification.v1.Notification.strategy:type_name -> notification.v1.SendStrategy
 	1,  // 10: notification.v1.SendResult.status:type_name -> notification.v1.SendStatus
 	2,  // 11: notification.v1.SendResult.err_code:type_name -> notification.v1.ErrCode
