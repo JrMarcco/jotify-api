@@ -16,7 +16,7 @@ enum Channel {
 enum SendStatus {
   STATUS_UNSPECIFIED = 0;
   PREPARE = 1;
-  CANCELED = 2;
+  CANCEL = 2;
   PENDING = 3;
   SUCCESS = 4;
   FAILURE = 5;

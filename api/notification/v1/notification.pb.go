@@ -79,7 +79,7 @@ type SendStatus int32
 const (
 	SendStatus_STATUS_UNSPECIFIED SendStatus = 0
 	SendStatus_PREPARE            SendStatus = 1
-	SendStatus_CANCELED           SendStatus = 2
+	SendStatus_CANCEL             SendStatus = 2
 	SendStatus_PENDING            SendStatus = 3
 	SendStatus_SUCCESS            SendStatus = 4
 	SendStatus_FAILURE            SendStatus = 5
@@ -90,7 +90,7 @@ var (
 	SendStatus_name = map[int32]string{
 		0: "STATUS_UNSPECIFIED",
 		1: "PREPARE",
-		2: "CANCELED",
+		2: "CANCEL",
 		3: "PENDING",
 		4: "SUCCESS",
 		5: "FAILURE",
@@ -98,7 +98,7 @@ var (
 	SendStatus_value = map[string]int32{
 		"STATUS_UNSPECIFIED": 0,
 		"PREPARE":            1,
-		"CANCELED":           2,
+		"CANCEL":             2,
 		"PENDING":            3,
 		"SUCCESS":            4,
 		"FAILURE":            5,
@@ -1403,12 +1403,13 @@ const file_notification_v1_notification_proto_rawDesc = "" +
 	"\x03SMS\x10\x01\x12\t\n" +
 	"\x05EMAIL\x10\x02\x12\n" +
 	"\n" +
-	"\x06IN_APP\x10\x03*f\n" +
+	"\x06IN_APP\x10\x03*d\n" +
 	"\n" +
 	"SendStatus\x12\x16\n" +
 	"\x12STATUS_UNSPECIFIED\x10\x00\x12\v\n" +
-	"\aPREPARE\x10\x01\x12\f\n" +
-	"\bCANCELED\x10\x02\x12\v\n" +
+	"\aPREPARE\x10\x01\x12\n" +
+	"\n" +
+	"\x06CANCEL\x10\x02\x12\v\n" +
 	"\aPENDING\x10\x03\x12\v\n" +
 	"\aSUCCESS\x10\x04\x12\v\n" +
 	"\aFAILURE\x10\x05*\x93\x03\n" +
